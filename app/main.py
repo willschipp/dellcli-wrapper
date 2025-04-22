@@ -32,7 +32,7 @@ def main():
     # logger.info(f"environment={settings.env_for_dynaconf}")
 
     # Flask
-    app.run()
+    app.run(host="0.0.0.0",port=5000)
 
 if __name__ == "__main__":
     """__main__
