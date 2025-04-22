@@ -36,3 +36,34 @@ def get_token():
         'returncode':result.returncode
     }),200
 
+#dellctl --admin-token Admin-Token generate token --tenant csmtenant-test --access-token-expiration 100h --refresh-token-expiration 6000h --addr proxy-server.apps.ocp-control.powerflex.cto --insecure > tenant-perf.token.yml
+
+tenant_token_command = "generate token--admin-token ADMIN_TOKEN  --tenant TENANT_NAME --access-token-expiration TOKEN_EXPIRATION --refresh-token-expiration REFRESH_EXPIRATION --addr SERVER_ADDRESS --insecure"
+
+@main.route('/tenant/token',methods=['POST'])
+def get_tenant_token():
+    # get and return the whole yaml
+    # admin token
+    admin_token = request.json.get("admin-token")
+    # tenant name
+    tenant_name = request.json.get("tenant-name")
+    # token expiration
+    token_expiration = request.json.get("token-expiration")
+    # refresh expiration
+    refresh_expiration = request.json.get("refresh-expiration")
+    # server
+    server = request.json.get("server")
+    # replace command
+    command = tenant_token_command.replace("ADMIN_TOKEN",admin_token).replace("TENANT_NAME",tenant_name).replace("TOKEN_EXPIRATION",token_expiration).replace("REFRESH_EXPIRATION",refresh_expiration).replace("SERVER_ADDRESS",server)
+    execute_command = absolute_path + " " + command
+    result = subprocess.run(execute_command,shell=True,capture_output=True,text=True)
+    output = result.stdout if result.returncode == 0 else result.stderr
+
+    if result.returncode != 0:
+        # error
+        return jsonify({
+        'output':output,
+        'returncode':result.returncode
+        }),503
+    #if no error
+    return output,200    
