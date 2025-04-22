@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dellctl-wrapper-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dellctl-wrapper
+  template:
+    metadata:
+      labels:
+        app: dellctl-wrapper
+    spec:
+      containers:
+      - name: dellctl-wrapper-container
+        image: ghcr.io/willschipp/dellctl-wrapper:latest
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dellctl-wrapper-service
+spec:
+  selector:
+    app: dellctl-wrapper
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000
+  type: LoadBalancer
