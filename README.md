@@ -1,2 +1,2 @@
-# dellcli-wraper
-wrapper for the dellcli to expose via flask
+# dellctl-wraper
+wrapper for the dellctl to expose via flask

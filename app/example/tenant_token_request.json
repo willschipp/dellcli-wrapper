@@ -1,0 +1,10 @@
+{
+    "admin-token":{
+        "Access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJjc20iLCJleHAiOjE3NDUzNDA1MDksImdyb3VwIjoiYWRtaW4iLCJpc3MiOiJjb20uZGVsbC5jc20iLCJyb2xlcyI6IiIsInN1YiI6ImNzbS1hZG1pbiJ9.gQieUcbAU7c8_AxU5dh_SgBbieA4SHRiWIGCkcdwxjY",
+        "Refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJjc20iLCJleHAiOjE3NDUzNDc2NzksImdyb3VwIjoiYWRtaW4iLCJpc3MiOiJjb20uZGVsbC5jc20iLCJyb2xlcyI6IiIsInN1YiI6ImNzbS1hZG1pbiJ9.-0ErI6JZMAiqmc-rvjfVKKvBntF5aGFkgpvQBJrVVWo"
+    },
+    "tenant-name":"csmtenant-test",
+    "token-expiration":"100h",
+    "refresh-expiration":"6000h",
+    "server":"proxy-server.apps.ocp-control.powerflex.cto"
+}
