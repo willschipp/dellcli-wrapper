@@ -13,6 +13,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: 'Build Inventory Image'
+        workdir: ./app
         run: |
           docker build . --tag ghcr.io/willschipp/dellctl-wrapper:latest
           docker push ghcr.io/willschipp/dellctl-wrapper:latest
