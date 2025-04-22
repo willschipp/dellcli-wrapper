@@ -1,0 +1,6 @@
+{
+    "token-name":"admin",
+    "jwt-signing-secret":"secret",
+    "access-token-expiration":"30s",
+    "refresh-token-expiration":"120m"
+}
