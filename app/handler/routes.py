@@ -30,10 +30,9 @@ def get_token():
     result = subprocess.run(execute_command,shell=True,capture_output=True,text=True)
     output = result.stdout if result.returncode == 0 else result.stderr
 
-    return jsonify({
-        'output':output,
-        'returncode':result.returncode
-    }),200
+    print(f"sending this {output}")
+
+    return output,200
 
 #dellctl --admin-token Admin-Token generate token --tenant csmtenant-test --access-token-expiration 100h --refresh-token-expiration 6000h --addr proxy-server.apps.ocp-control.powerflex.cto --insecure > tenant-perf.token.yml
 

@@ -1,8 +1,24 @@
+# Build
+FROM node:slim as build
+
+WORKDIR /app
+
+COPY frontend/. ./
+
+# install and build
+
+RUN npm install && npm run build
+
+
 # Use the official Python 
 FROM python:3.12.10-slim-bullseye
 
 # Set the working directory within the container
 WORKDIR /app
+
+RUN mkdir /app/frontend
+
+COPY --from=build /app/dist /app/frontend/dist/.
 
 # Copy the requirements.txt file into the container
 COPY requirements.txt requirements.txt
